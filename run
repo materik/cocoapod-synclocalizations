@@ -1,5 +1,21 @@
 #!/bin/sh
 
+# params: stringsFile
+findUndefinedKeys() {
+    echo "> Find undefined keys in: \"$1\""
+
+    findOrDefineUndefinedEnumKeys "$1"
+    findUndefinedStringsKeys "$1"
+    findDuplicateStringsKeys "$1"
+}
+
+# params: stringsFile
+sortStringsKeys() {
+    sort -o "$1" "$1"
+}
+
+## HELPER
+
 # params: index lineNumber message
 warn() {
     echo "$1:$2:" | perl -p -e "s/$/ warning: Localization: $3/"
@@ -37,6 +53,8 @@ lineNumber() {
     lineNumber=(`egrep --line-number -o "$1" "$2" | cut -f1 -d:`)
 }
 
+## UNDEFINED STRINGS KEYS
+
 # params: stringsFile
 findUndefinedStringsKeys() {
     enumFile
@@ -52,6 +70,8 @@ findUndefinedStringsKeys() {
     done
 }
 
+## DUPLICATE STRINGS KEYS
+
 # params: stringsFile
 findDuplicateStringsKeys() {
     stringsKeys "$1"
@@ -63,6 +83,8 @@ findDuplicateStringsKeys() {
         warn $1 $lineNumber "Key is duplicated: \"$key\""
     done
 }
+
+## UNDEFINED ENUM KEYS
 
 # params: stringsFile
 findUndefinedEnumKeys() {
@@ -79,20 +101,30 @@ findUndefinedEnumKeys() {
 }
 
 # params: stringsFile
-findUndefinedKeys() {
-    echo "> Find undefined keys in: \"$1\""
+defineUndefinedEnumKeys() {
+    enumFile
+    enumKeys
 
-    findUndefinedStringsKeys "$1"
-    findDuplicateStringsKeys "$1"
-    findUndefinedEnumKeys "$1"
+    for key in $enumKeys
+    do
+        if ! egrep -q "^\"$key" "$1"
+        then
+            echo "\"$key\" = nil;" >> "$1"
+        fi
+    done
 }
 
 # params: stringsFile
-sortStringsKeys() {
-    sort -o "$1" "$1"
+findOrDefineUndefinedEnumKeys() {
+    if echo "$1" | egrep -q ".*Default.strings$"
+    then
+        findUndefinedEnumKeys "$1"
+    else
+        defineUndefinedEnumKeys "$1"
+    fi
 }
 
-# EXECUTE
+## EXECUTE
 
 stringsFiles
 for stringsFile in $stringsFiles
