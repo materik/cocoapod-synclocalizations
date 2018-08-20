@@ -1,33 +1,42 @@
 
 import Foundation
 
-public protocol Localizable: RawRepresentable where Self.RawValue == String {
+public protocol Localizable: RawRepresentable, CustomStringConvertible where Self.RawValue == String {
     
     var tableName: String { get }
+    var bundle: Bundle { get }
     
 }
 
 public extension Localizable {
 
-    var localized: String {
-        return self.rawValue.localized(tableName: self.tableName)
+    var bundle: Bundle {
+        return .main
     }
-
+    
+    var localized: String {
+        return self.rawValue.localized(tableName: self.tableName, bundle: self.bundle)
+    }
+    
+    var description: String {
+        return self.localized
+    }
+    
 }
 
 private extension String {
 
-    func localized(tableName: String) -> String {
-        return self.localized(tableName: tableName) ?? self.localized()
+    func localized(tableName: String, bundle: Bundle) -> String {
+        return self.localized(tableName: tableName, bundle: bundle) ?? self.localized(bundle: bundle)
     }
 
-    private func localized(tableName: String) -> String? {
-        let string = NSLocalizedString(self, tableName: tableName, value: "", comment: "")
+    private func localized(tableName: String, bundle: Bundle) -> String? {
+        let string = NSLocalizedString(self, tableName: tableName, bundle: bundle, value: "", comment: "")
         return string == self ? nil : string
     }
 
-    private func localized() -> String {
-        return NSLocalizedString(self, tableName: "Default", value: "", comment: "")
+    private func localized(bundle: Bundle) -> String {
+        return NSLocalizedString(self, tableName: "Default", bundle: bundle, value: "", comment: "")
     }
 
 }
