@@ -84,10 +84,7 @@ findUndefinedKeys() {
 
     findUndefinedStringsKeys "$1"
     findDuplicateStringsKeys "$1"
-    if echo "$1" | egrep -q ".*Default.strings$"
-    then
-        findUndefinedEnumKeys "$1"
-    fi
+    findUndefinedEnumKeys "$1"
 }
 
 # EXECUTE
