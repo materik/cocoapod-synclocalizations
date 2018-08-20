@@ -6,7 +6,7 @@ enum Strings: String, Localizable {
     case title
     case description
     
-    var tableName: String {
+    var table: String {
         return "Localizable2"
     }
 

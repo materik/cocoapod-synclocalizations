@@ -28,7 +28,7 @@ private enum TestStrings1: String, Localizable {
     case title
     case description
     
-    var tableName: String {
+    var table: String {
         return "Localizable1"
     }
     
@@ -43,7 +43,7 @@ private enum TestStrings2: String, Localizable {
     case title
     case description
     
-    var tableName: String {
+    var table: String {
         return "Localizable2"
     }
     
