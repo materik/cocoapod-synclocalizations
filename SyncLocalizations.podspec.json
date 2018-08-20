@@ -1,0 +1,21 @@
+{
+  "name": "SyncLocalizations",
+  "version": "0.0.1",
+  "homepage": "https://github.com/materik/cocoapod-synclocalizations.git",
+  "summary": "Show warnings if your localizable strings files aren't in sync with your Strings enum",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE.md"
+  },
+  "authors": {
+    "Mattias Eriksson": "mattias@materikab.com"
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source": {
+    "git": "https://github.com/materik/cocoapod-synclocalizations.git",
+    "tag": "0.0.1"
+  },
+  "source_files": ""
+}
