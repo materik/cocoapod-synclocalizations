@@ -17,5 +17,5 @@
     "git": "https://github.com/materik/cocoapod-synclocalizations.git",
     "tag": "0.0.1"
   },
-  "source_files": ""
+  "source_files": "run"
 }
