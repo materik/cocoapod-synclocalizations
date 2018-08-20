@@ -87,11 +87,17 @@ findUndefinedKeys() {
     findUndefinedEnumKeys "$1"
 }
 
+# params: stringsFile
+sortStringsKeys() {
+    sort -o "$1" "$1"
+}
+
 # EXECUTE
 
 stringsFiles
 for stringsFile in $stringsFiles
 do
     findUndefinedKeys "$stringsFile"
+    sortStringsKeys "$stringsFile"
 done
 
