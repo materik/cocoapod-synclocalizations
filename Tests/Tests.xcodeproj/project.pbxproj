@@ -201,7 +201,6 @@
 			);
 			name = "Sync Localizations";
 			outputPaths = (
-				"$(SRCROOT)/Tests/Localizations/en.lproj/Default.strings",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

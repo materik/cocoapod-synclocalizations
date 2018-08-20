@@ -2,13 +2,17 @@
 
 # params: index lineNumber message
 warn() {
-    stringsFile $1
-    echo "$stringsFile:$2:" | perl -p -e "s/$/ warning: Localization: $3/"
+    echo "$1:$2:" | perl -p -e "s/$/ warning: Localization: $3/"
 }
 
 # params: -
 enumFile() {
-    enumFile="$SCRIPT_INPUT_FILE_0"
+    if [ -z "$SCRIPT_INPUT_FILE_0" ]
+    then
+        enumFile=`find "$SRCROOT" -name "Strings.swift"`
+    else
+        enumFile="$SCRIPT_INPUT_FILE_0"
+    fi
 }
 
 # params: -
@@ -16,16 +20,16 @@ enumKeys() {
     enumKeys=`cat "$enumFile" | egrep -o "case\s.*$" | sed "s/case //g"`
 }
 
-# params: index
-stringsFile() {
-    tmp="SCRIPT_OUTPUT_FILE_$1"
-    stringsFile=${!tmp}
+# params: -
+stringsFiles() {
+    IFS=$'\t\n'
+    stringsFiles=("`find "$SRCROOT" -name "*.strings" -type f`")
+    unset $IFS
 }
 
-# params: index
+# params: stringsFile
 stringsKeys() {
-    stringsFile $1
-    stringsKeys=`cat "$stringsFile" | egrep -o "^\"\w+\"" | sed "s/\"//g"`
+    stringsKeys=`cat "$1" | egrep -o "^\"\w+\"" | sed "s/\"//g"`
 }
 
 # params: pattern file
@@ -33,68 +37,64 @@ lineNumber() {
     lineNumber=(`egrep --line-number -o "$1" "$2" | cut -f1 -d:`)
 }
 
-# params: index
+# params: stringsFile
 findUndefinedStringsKeys() {
     enumFile
-    stringsFile $1
-    stringsKeys $1
+    stringsKeys "$1"
 
     for key in $stringsKeys
     do
         if ! egrep -q "case $key" "$enumFile"
         then
-            lineNumber "^\"$key" "$stringsFile"
+            lineNumber "^\"$key" "$1"
             warn $1 $lineNumber "Key doesn't exist: \"$key\""
         fi
     done
 }
 
-# params: index
+# params: stringsFile
 findDuplicateStringsKeys() {
-    stringsFile $1
-    stringsKeys $1
+    stringsKeys "$1"
 
     duplicateKeys=`printf '%s\n' ${stringsKeys[@]} | awk '!($0 in seen){seen[$0];next} 1'`
     for key in $duplicateKeys
     do
-        lineNumber "^\"$key" "$stringsFile"
+        lineNumber "^\"$key" "$1"
         warn $1 $lineNumber "Key is duplicated: \"$key\""
     done
 }
 
-# params: index
+# params: stringsFile
 findUndefinedEnumKeys() {
     enumFile
     enumKeys
-    stringsFile $1
 
     for key in $enumKeys
     do
-        if ! egrep -q "^\"$key" "$stringsFile"
+        if ! egrep -q "^\"$key" "$1"
         then
-            warn $1 1 "Key is missing: \"$key\""
+            warn "$1" 1 "Key is missing: \"$key\""
         fi
     done
 }
 
-# params: index
+# params: stringsFile
 findUndefinedKeys() {
-    stringsFile $1
+    echo "> Find undefined keys in: \"$1\""
 
-    echo "> Find undefined keys in: \"$stringsFile\""
-
-    findUndefinedStringsKeys $i
-    findDuplicateStringsKeys $i
-    if echo "$stringsFile" | egrep -q ".*Default.strings$"
+    findUndefinedStringsKeys "$1"
+    findDuplicateStringsKeys "$1"
+    if echo "$1" | egrep -q ".*Default.strings$"
     then
-        findUndefinedEnumKeys $i
+        findUndefinedEnumKeys "$1"
     fi
 }
 
 # EXECUTE
 
-for i in `seq 0 $(($SCRIPT_OUTPUT_FILE_COUNT - 1))`
+stringsFiles
+for stringsFile in $stringsFiles
 do
-    findUndefinedKeys $i
+    findUndefinedKeys "$stringsFile"
 done
 
