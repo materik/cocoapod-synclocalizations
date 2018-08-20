@@ -1,14 +1,5 @@
 #!/bin/sh
 
-SRCROOT="/Users/materik/Library/Mobile Documents/com~apple~CloudDocs/Xcode/civivapp"
-SCRIPT_INPUT_FILE_0="$SRCROOT/App/Localization/Strings.swift"
-SCRIPT_OUTPUT_FILE_0="$SRCROOT/App/Localization/Type1.strings"
-SCRIPT_OUTPUT_FILE_1="$SRCROOT/App/Localization/Type2.strings"
-SCRIPT_OUTPUT_FILE_2="$SRCROOT/App/Localization/Default.strings"
-SCRIPT_OUTPUT_FILE_COUNT=3
-
-# =============================
-
 # params: index lineNumber message
 warn() {
     stringsFile $1
@@ -106,3 +97,4 @@ for i in `seq 0 $(($SCRIPT_OUTPUT_FILE_COUNT - 1))`
 do
     findUndefinedKeys $i
 done
+
