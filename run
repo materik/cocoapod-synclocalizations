@@ -1,10 +1,24 @@
 #!/bin/sh
 
+run() {
+    stringsFiles
+    for stringsFile in $stringsFiles
+    do
+        echo "> Find undefined keys in: \"$stringsFile\""
+
+        defineUndefinedEnumKeys "$stringsFile"
+        sortStringsKeys "$stringsFile"
+        findUndefinedEnumKeys "$stringsFile"
+        findUndefinedStringsKeys "$stringsFile"
+        findDuplicateStringsKeys "$stringsFile"
+    done
+}
+
 ## HELPER
 
 # params: index lineNumber message
 warn() {
-    echo "$1:$2:" | perl -p -e "s/$/ warning: Localization: $3/"
+    echo "$1:$2:" | perl -p -e "s/$/ warning: SyncLocalizations: $3/"
 }
 
 # params: -
@@ -111,15 +125,5 @@ defineUndefinedEnumKeys() {
 
 ## EXECUTE
 
-stringsFiles
-for stringsFile in $stringsFiles
-do
-    echo "> Find undefined keys in: \"$stringsFile\""
-
-    defineUndefinedEnumKeys "$stringsFile"
-    sortStringsKeys "$stringsFile"
-    findUndefinedEnumKeys "$stringsFile"
-    findUndefinedStringsKeys "$stringsFile"
-    findDuplicateStringsKeys "$stringsFile"
-done
+run
 
