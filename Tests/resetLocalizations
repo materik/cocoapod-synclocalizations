@@ -1,0 +1,27 @@
+#!/bin/sh
+
+echo '
+"title" = nil;
+"description" = "This is a fun description";
+"unknown" = "This doesnt exist in the Strings enum";' > ./Tests/Localizations/en.lproj/Localizable1.strings
+
+echo '
+"description" = "Det här är en rolig beskrivning";
+"unknown" = nil;' > ./Tests/Localizations/sv.lproj/Localizable1.strings
+
+echo '
+"title" = "Howdy";
+"description" = "Hows it going partner?";
+"description" = "This is a duplicate";' > ./Tests/Localizations/en.lproj/Localizable2.strings
+
+echo '
+"title" = "Tjena";
+"description" = "Hur mås det?";
+"description" = "Det här är ett duplicate";' > ./Tests/Localizations/sv.lproj/Localizable2.strings
+
+echo '
+"title" = "Hello";' > ./Tests/Localizations/en.lproj/Default.strings
+
+echo '
+"title" = "Hej";
+"description" = "Det här är en beskrivning";' > ./Tests/Localizations/sv.lproj/Default.strings

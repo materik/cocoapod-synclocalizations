@@ -1,4 +1,4 @@
 
-"title" = nil;
 "description" = "This is a fun description";
-"unknown" = "Detta existerar inte i Strings enumen";
+"title" = nil;
+"unknown" = "This doesnt exist in the Strings enum";
