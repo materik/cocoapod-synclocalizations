@@ -29,8 +29,6 @@
 		C169C87C212B3324006A7476 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Default.strings; sourceTree = "<group>"; };
 		C169C885212B4818006A7476 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		C1E93B88212B3115009B1A4E /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		C1E93B99212B32B8009B1A4E /* Source.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Source.h; sourceTree = "<group>"; };
-		C1E93B9A212B32B8009B1A4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E13FD9A38FA7666B9CC1FAC6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -100,15 +98,6 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		C169C879212B3316006A7476 /* SupportingFiles */ = {
-			isa = PBXGroup;
-			children = (
-				C1E93B99212B32B8009B1A4E /* Source.h */,
-				C1E93B9A212B32B8009B1A4E /* Info.plist */,
-			);
-			path = SupportingFiles;
-			sourceTree = "<group>";
-		};
 		C169C884212B4809006A7476 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +113,6 @@
 				C169C878212B3309006A7476 /* Localizable1.strings */,
 				C169C872212B3302006A7476 /* Localizable2.strings */,
 				C169C875212B3308006A7476 /* Default.strings */,
-				C169C879212B3316006A7476 /* SupportingFiles */,
 			);
 			path = Localizations;
 			sourceTree = "<group>";
