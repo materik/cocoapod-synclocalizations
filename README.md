@@ -18,7 +18,7 @@ pod 'SyncLocalizations', :git => 'https://github.com/materik/cocoapod-synclocaza
 Add the following `Run Script Phase` to your Build Phases:
 
 ```sh
-"${SRCROOT}/SyncLocalizations/run"
+"${PODS_ROOT}/SyncLocalizations/run"
 ```
 
 Add the path to your Strings enum in the `Input Files` section, alternatively the script will look for `Strings.swift`.
