@@ -1,4 +1,6 @@
 
 "description" = "Hows it going partner?";
 "description" = "This is a duplicate";
+"descriptionNumber1" = nil;
+"descriptionNumber2" = nil;
 "title" = "Howdy";

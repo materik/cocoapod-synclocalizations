@@ -7,9 +7,12 @@ echo '
 
 echo '
 "description" = "Det här är en rolig beskrivning";
+"descriptionNumber1" = nil;
 "unknown" = nil;' > ./Tests/Localizations/sv.lproj/Localizable1.strings
 
 echo '
+"descriptionNumber1" = nil;
+"descriptionNumber2" = nil;
 "title" = "Howdy";
 "description" = "Hows it going partner?";
 "description" = "This is a duplicate";' > ./Tests/Localizations/en.lproj/Localizable2.strings
@@ -20,6 +23,8 @@ echo '
 "description" = "Det här är ett duplicate";' > ./Tests/Localizations/sv.lproj/Localizable2.strings
 
 echo '
+"descriptionNumber1" = "Hi again";
+"description" = nil;
 "title" = "Hello";' > ./Tests/Localizations/en.lproj/Default.strings
 
 echo '

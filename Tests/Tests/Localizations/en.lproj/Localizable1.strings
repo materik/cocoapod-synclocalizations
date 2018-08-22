@@ -1,4 +1,6 @@
 
 "description" = "This is a fun description";
+"descriptionNumber1" = nil;
+"descriptionNumber2" = nil;
 "title" = nil;
 "unknown" = "This doesnt exist in the Strings enum";

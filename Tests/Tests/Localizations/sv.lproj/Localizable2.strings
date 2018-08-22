@@ -1,4 +1,6 @@
 
 "description" = "Det här är ett duplicate";
 "description" = "Hur mås det?";
+"descriptionNumber1" = nil;
+"descriptionNumber2" = nil;
 "title" = "Tjena";

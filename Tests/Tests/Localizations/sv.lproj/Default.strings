@@ -1,3 +1,5 @@
 
 "description" = "Det här är en beskrivning";
+"descriptionNumber1" = nil;
+"descriptionNumber2" = nil;
 "title" = "Hej";
