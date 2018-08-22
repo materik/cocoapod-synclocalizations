@@ -21,6 +21,11 @@ warn() {
     echo "$1:$2:" | perl -p -e "s/$/ warning: SyncLocalizations: $3/"
 }
 
+# params: index lineNumber message
+error() {
+    echo "$1:$2:" | perl -p -e "s/$/ error: SyncLocalizations: $3/"
+}
+
 # params: -
 enumFile() {
     if [ -z "$SCRIPT_INPUT_FILE_0" ]
@@ -33,7 +38,7 @@ enumFile() {
 
 # params: -
 enumKeys() {
-    enumKeys=`cat "$enumFile" | egrep -o "case\s\w*$" | sed "s/case //g"`
+    enumKeys=`cat "$enumFile" | egrep -o "case\s.+$" | sed "s/case //g"`
 }
 
 # params: -
@@ -45,7 +50,7 @@ stringsFiles() {
 
 # params: stringsFile
 stringsKeys() {
-    stringsKeys=`cat "$1" | egrep -o "^\"\w+\"" | sed "s/\"//g"`
+    stringsKeys=`cat "$1" | egrep -o "^\"[^\"]+\"" | sed "s/\"//g"`
 }
 
 # params: pattern file
@@ -103,7 +108,7 @@ findUndefinedEnumKeys() {
             if egrep -q "^\"$key\" = nil;$" "$1"
             then
                 lineNumber "^\"$key\"" "$1"
-                warn "$1" $lineNumber "Key needs to be defined: \"$key\""
+                error "$1" $lineNumber "Key needs to be defined: \"$key\""
             fi
         done
     fi
@@ -126,4 +131,3 @@ defineUndefinedEnumKeys() {
 ## EXECUTE
 
 run
-
