@@ -1,4 +1,4 @@
-# SyncLocalizations
+# SyncLocalizations [![](https://img.shields.io/badge/contact-@thematerik-blue.svg?style=flat-square)](http://twitter.com/thematerik) [![](https://img.shields.io/travis/materik/cocoapod-synclocalizations.svg?style=flat-square)](https://travis-ci.org/materik/cocoapod-synclocalizations)
 
 * Gives warnings if you have missed to define a string in your strings files
 * Gives warnings if you have duplicate keys in your strings file
