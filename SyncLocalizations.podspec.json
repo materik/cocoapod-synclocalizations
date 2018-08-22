@@ -1,6 +1,6 @@
 {
   "name": "SyncLocalizations",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/materik/cocoapod-synclocalizations.git",
   "summary": "Show warnings if your localizable strings files aren't in sync with your Strings enum",
   "license": {
@@ -15,7 +15,7 @@
   },
   "source": {
     "git": "https://github.com/materik/cocoapod-synclocalizations.git",
-    "tag": "0.1.2"
+    "tag": "0.1.3"
   },
   "preserve_paths": [
     "run"
