@@ -1,0 +1,44 @@
+default_platform :ios
+
+platform :ios do |options|
+
+    lane :install do
+        install_ios
+        install_node
+    end
+
+    lane :test do
+        install
+        test_ios
+        test_node
+    end
+
+    # -------------
+
+    private_lane :install_ios do
+        cocoapods(
+            clean: true,
+            repo_update: true,
+            podfile: "./Tests"
+        )
+    end
+
+    private_lane :install_node do
+        sh "cd ../Tests && npm install"
+    end
+    
+    private_lane :test_ios do
+        scan(
+            clean: true,
+            workspace: "./Tests/Tests.xcworkspace",
+            device: "iPhone 8",
+            scheme: "Tests",
+        )
+    end
+
+    private_lane :test_node do
+        sh "cd ../Tests && npm test"
+    end
+
+end
+

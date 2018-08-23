@@ -6,21 +6,6 @@ branches:
 before_install:
   - export LANG=en_US.UTF-8
   - brew update
-  - gem install cocoapods -v 1.5.3
-  - gem install specific_install
-install:
-  - pod repo update
-  - cd ${TEST_SUITE} && pod install && cd ..
-env:
-  global:
-    - DESTINATION="platform=iOS Simulator,name=iPhone 7,OS=10.0"
-    - IOS_SDK="iphonesimulator11.0"
-    - SCHEME="Tests"
-    - TEST_SUITE="Tests"
+  - bundle install
 script:
-  - xcodebuild
-    -workspace "${TEST_SUITE}/${TEST_SUITE}.xcworkspace"
-    -scheme "${SCHEME}"
-    -sdk "${IOS_SDK}"
-    -destination "${DESTINATION}"
-    clean build test | xcpretty -c
+  - fastlane test

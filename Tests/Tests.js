@@ -3,7 +3,7 @@ var assert = require('assert')
 var cmd = require('node-cmd')
 var mocha = require('mocha')
 
-var cmdroot = undefined
+var srcroot = undefined
 var result = undefined
 
 describe('run', function() {
@@ -13,8 +13,8 @@ describe('run', function() {
     before(function(callback) {
         var self = this
         resetLocalizations(function() {
-            getCmdroot(function(cmdroot) {
-                getResult(cmdroot, function(result) {
+            getCmdroot(function(srcroot) {
+                getResult(srcroot, function(result) {
                     self.result = result
                     callback()
                 })
@@ -107,14 +107,14 @@ var resetLocalizations = function(callback) {
 
 var getCmdroot = function(callback) {
     cmd.get('pwd', function(err, data, stderr) {
-        var cmdroot = data.replace('\n', '')
-        callback(cmdroot)
+        var srcroot = data.replace('\n', '')
+        callback(srcroot)
     })
 }
 
-var getResult = function(cmdroot, callback) {
-    cmd.get('CMDROOT="' + cmdroot + '" ../run', function(err, data, stderr) {
-        var regex = new RegExp(cmdroot + '/Tests/Localizations/', 'g')
+var getResult = function(srcroot, callback) {
+    cmd.get('SRCROOT="' + srcroot + '" ../run', function(err, data, stderr) {
+        var regex = new RegExp(srcroot + '/Tests/Localizations/', 'g')
         var result = data.replace(regex, '')
         result = result.split('\n').slice(0, -1)
         callback(result)
