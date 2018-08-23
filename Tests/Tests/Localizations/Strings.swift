@@ -9,7 +9,18 @@ enum Strings: String, Localizable {
     case descriptionNumber2
     
     var table: String {
-        return "Localizable2"
+        return Mode.mode1.table
     }
 
+}
+
+private extension Mode {
+    
+    var table: String {
+        switch self {
+        case .mode1: return "Localizable1"
+        case .mode2: return "Localizable2"
+        }
+    }
+    
 }

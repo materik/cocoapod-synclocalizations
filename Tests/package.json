@@ -1,0 +1,10 @@
+{
+    "dependencies": [
+        "mocha",
+        "node-cmd"
+    ],
+    "scripts": {
+        "reset": "./resetLocalizations",
+        "test": "mocha Tests.js"
+    }
+}

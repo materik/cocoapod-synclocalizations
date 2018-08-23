@@ -39,3 +39,5 @@ project.xcworkspace
 xcuserdata
 
 *.swp
+
+node_modules

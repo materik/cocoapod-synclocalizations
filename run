@@ -38,7 +38,7 @@ enumFile() {
 
 # params: -
 enumKeys() {
-    enumKeys=`cat "$enumFile" | egrep -o "case\s.+$" | sed "s/case //g"`
+    enumKeys=`cat "$enumFile" | egrep -o "case\s\w+$" | sed "s/case //g"`
 }
 
 # params: -

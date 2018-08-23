@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C14E7526212F222500DB1530 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14E7525212F222500DB1530 /* Mode.swift */; };
 		C169C87E212B3932006A7476 /* Localizable2.strings in Resources */ = {isa = PBXBuildFile; fileRef = C169C872212B3302006A7476 /* Localizable2.strings */; };
 		C169C87F212B3934006A7476 /* Localizable1.strings in Resources */ = {isa = PBXBuildFile; fileRef = C169C878212B3309006A7476 /* Localizable1.strings */; };
 		C169C880212B3937006A7476 /* Default.strings in Resources */ = {isa = PBXBuildFile; fileRef = C169C875212B3308006A7476 /* Default.strings */; };
@@ -21,6 +22,7 @@
 		8F1324C5CF18D1D70358341B /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C134CB7E1C3CB65600215143 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C134CB831C3CB65600215143 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C14E7525212F222500DB1530 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 		C169C871212B3302006A7476 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable2.strings; sourceTree = "<group>"; };
 		C169C874212B3308006A7476 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Default.strings; sourceTree = "<group>"; };
 		C169C877212B3309006A7476 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable1.strings; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				C1E93B88212B3115009B1A4E /* Strings.swift */,
+				C14E7525212F222500DB1530 /* Mode.swift */,
 				C169C878212B3309006A7476 /* Localizable1.strings */,
 				C169C872212B3302006A7476 /* Localizable2.strings */,
 				C169C875212B3308006A7476 /* Default.strings */,
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C14E7526212F222500DB1530 /* Mode.swift in Sources */,
 				C169C881212B393D006A7476 /* Strings.swift in Sources */,
 				C169C886212B4818006A7476 /* Tests.swift in Sources */,
 			);
