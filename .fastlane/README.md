@@ -26,11 +26,6 @@ fastlane ios install
 fastlane ios test
 ```
 
-### ios test_node
-```
-fastlane ios test_node
-```
-
 
 ----
 

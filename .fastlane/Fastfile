@@ -8,18 +8,16 @@ platform :ios do |options|
     end
 
     lane :test do
-        install
         test_ios
         test_node
     end
 
-    # -------------
+    ####################
 
     private_lane :install_ios do
         cocoapods(
-            clean: true,
             repo_update: true,
-            podfile: "./Tests"
+            podfile: "./Tests",
         )
     end
 
@@ -31,8 +29,8 @@ platform :ios do |options|
         scan(
             clean: true,
             workspace: "./Tests/Tests.xcworkspace",
-            device: "iPhone 8",
             scheme: "Tests",
+            skip_build: true
         )
     end
 
