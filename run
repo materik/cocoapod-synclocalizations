@@ -44,7 +44,7 @@ enumKeys() {
 # params: -
 stringsFiles() {
     IFS=$'\t\n'
-    stringsFiles=("`find "$SRCROOT" -name "*.strings" -type f`")
+    stringsFiles=("`find "$SRCROOT" -name "*.strings" -type f ! -path "*/Pods/*"`")
     unset $IFS
 }
 
